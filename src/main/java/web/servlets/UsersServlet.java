@@ -50,7 +50,6 @@ public class UsersServlet extends HttpServlet {
 
         UserProfile profile = allProfiles.get(profileIndex);
 
-        // Читание HTML шаблона
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream("templates/people-list.html");
         if (inputStream == null) {
             resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);

@@ -121,7 +121,6 @@ public class UsersSQL implements DAO<UserProfile> {
         return likedProfiles;
     }
 
-    // Метод для получения всех лайков
     public List<Liked> getAllLikes() throws SQLException {
         List<Liked> likes = new ArrayList<>();
         String sql = "SELECT id, user_id1, user_id2, timestamp FROM likes";
@@ -138,7 +137,6 @@ public class UsersSQL implements DAO<UserProfile> {
         }
         return likes;
     }
-    // Метод для получения id юзера по имени
     public static int getUserIdByUsername(String username) throws SQLException {
         int userId = -1;
 
@@ -159,7 +157,7 @@ public class UsersSQL implements DAO<UserProfile> {
 public List<Message> getMessages(int userId1, int userId2) throws SQLException {
     List<Message> messages = new ArrayList<>();
     String sql = "SELECT m.id, m.sender_id, m.receiver_id, m.content, m.timestamp, u.name AS sender_username " +
-            "FROM massages m " +
+            "FROM messages m " +
             "JOIN users u ON m.sender_id = u.id " +
             "WHERE (m.sender_id = ? AND m.receiver_id = ?) OR (m.sender_id = ? AND m.receiver_id = ?) " +
             "ORDER BY m.timestamp";
@@ -186,7 +184,7 @@ public List<Message> getMessages(int userId1, int userId2) throws SQLException {
 }
 
     public void saveMessage(int senderId, int receiverId, String content) throws SQLException {
-        String sql = "INSERT INTO massages (sender_id, receiver_id, content) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO messages (sender_id, receiver_id, content) VALUES (?, ?, ?)";
         try (Connection conn = ConnectionManager.open();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, senderId);
@@ -197,14 +195,11 @@ public List<Message> getMessages(int userId1, int userId2) throws SQLException {
     }
 
     public int getCurrentUserIdFromSession(HttpSession session) {
-        // Получаем атрибут сессии с ключом "userId"
         Object userIdAttribute = session.getAttribute("userId");
 
-        // Проверяем, что атрибут существует и является целым числом
         if (userIdAttribute instanceof Integer) {
             return (int) userIdAttribute;
         } else {
-            // Если атрибут отсутствует или не является целым числом, возвращаем -1 или другое значение по умолчанию
             return -1;
         }
     }
