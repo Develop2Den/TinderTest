@@ -1,0 +1,67 @@
+body {
+    width: 100%;
+    text-align: center;
+    color: red;
+    background-color: #c6c8ca;
+}
+.cont {
+    margin-top: 100px;
+    width: 850px;
+    border: 2px solid darkviolet;
+    border-bottom: 5px solid darkviolet;
+    border-radius: 5px;
+}
+.head {
+    width: 100%;
+    background-color: darkviolet;
+    height: 30px;
+}
+.title {
+    margin: 0; !important;
+    color: white;
+    font-weight: bold;
+    text-align: right;
+    align-items: center;
+    padding-right: 20px;
+}
+div {
+    margin: 0 auto;
+    width: 500px;
+    display: flex;
+    flex-direction: column
+}
+h3 {
+    font-weight: bold;
+    color: red;
+    font-size: large;
+}
+button {
+    margin-top: 10px;
+    color: red;
+}
+.li {
+    color: blue;
+    font-size: large;
+}
+.text {
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.chat-div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.btn {
+    color: blue;
+    background: #B2B2B2;
+    border-radius: 5px;
+    border: 2px solid black;
+    padding: 5px 15px;
+
+}
+.li_str {
+    color: #1e7e34;
+  margin-right: 25px;
+}

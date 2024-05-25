@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+<div class="cont">
+    <div class="head">
+        <h3 class="title">Tinder</h3>
+    </div>
+<h1>Chat</h1>
+<div>
+    <ul>
+        <#list messages as message>
+        <li class="li"><strong class="li_str">${message.senderUsername}:</strong> ${message.content} <em>(${message.getFormattedTime()})</em></li>
+    </#list>
+    </ul>
+    <form class="chat-div" method="post">
+        <!-- Добавление скрытого поля для передачи ID текущего пользователя -->
+        <input type="hidden" name="senderId" value="${currentUserId}">
+        <!-- Добавление скрытого поля для передачи ID получателя -->
+        <input type="hidden" name="receiverId" value="${userProfile.id}">
+        <textarea class="text" name="content" placeholder="Type your message here..."></textarea>
+        <button class="btn" type="submit">Send</button>
+    </form>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+version: '4.3'
+
+services:
+  postgres96:
+    image: postgres:16.2
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'JavaLearn007'
+    ports:
+      - "5432:5432"
+    container_name: pg007
